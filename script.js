@@ -17,29 +17,35 @@ function search(str) {
 
 
 function searchHandler(e) {
+
 	//seting time out so function has enough time to catch input
 	setTimeout(function () {
 		const newList = search(input.value);
-		console.log(input.value);
+		//console.log(input.value);
 		showSuggestions(newList);
 	},10)
 
 
-	
-
 }
 
 function showSuggestions(results, inputVal) {
+	
 	suggestions.innerHTML = '';
-	for (let el of results) {
-		createSuggestions(el);
+	if(input.value !== ''){
+		for (let el of results) {
+			createSuggestions(el);
+		}
 	}
+	
 	
 	
 }
 
 function useSuggestion(e) {
-	// TODO
+	suggestions.innerHTML = '';
+	input.value = e.target.innerText
+	
+	
 }
 
 function createSuggestions(resultEl) {
